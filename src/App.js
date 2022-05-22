@@ -4,8 +4,8 @@
 function App() {
   return (
     <div className="App">
-      {/* <TopBar />
-      <Home /> */}
+      <TopBar />
+      {/* <Home /> */}
     </div>
   );
 }
