@@ -17,14 +17,12 @@ export default function TopBar() {
             <Link className="link" to="/">
               HOME
             </Link>
-            |{" "}
           </li>
           <li className="top-list-item">
             {" "}
             <Link className="link" to="/about">
               ABOUT
             </Link>
-            |
           </li>
           <li className="top-list-item">
             {" "}
