@@ -41,11 +41,13 @@ export default function TopBar() {
       </div>
       <div className="top-right">
         {user ? (
-          <img
-            className="top-image"
-            src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHw%3D&w=1000&q=80"
-            alt="profile photo"
-          />
+          <Link to="/settings">
+            <img
+              className="top-image"
+              src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHw%3D&w=1000&q=80"
+              alt="profile photo"
+            />
+          </Link>
         ) : (
           <ul className="top-list">
             {" "}
