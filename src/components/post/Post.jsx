@@ -1,39 +1,28 @@
+import { Link } from "react-router-dom";
 import "./post.css";
 
-export default function Post() {
+export default function Post({ post }) {
   return (
     <div className="post">
-      <img
-        src="https://vuenj.com/wp-content/uploads/2020/07/Iguazu-Falls-scaled.jpg"
-        alt="post image"
-        className="post-img"
-      />
+      {post.photo ? (
+        <img src={post.photo} alt="post image" className="post-img" />
+      ) : null}
       <div className="post-info">
         <div className="post-categories">
-          <span className="post-category">Music</span>
-          <span className="post-category">Life</span>
+          {post.categories.map((category) => (
+            <span className="post-category">{category.name}</span>
+          ))}
         </div>
-        <span className="post-title">
-          Lorem ipsum dolor sit amet consectetur.
-        </span>
+        <Link to={`/post/${post._id}`} className="link">
+          <span className="post-title">{post.title}</span>
+        </Link>
         <hr />
-        <span className="post-date">1 hour ago</span>
+        <span className="post-date">
+          {" "}
+          {new Date(post.createdAt).toDateString()}
+        </span>
       </div>
-      <p className="post-description">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat
-        architecto omnis animi id ut sit earum soluta cupiditate, ex quidem
-        repellat, itaque, voluptas dolores nisi ea officiis nihil consequuntur.
-        Necessitatibus. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Placeat architecto omnis animi id ut sit earum soluta cupiditate, ex
-        quidem repellat, itaque, voluptas dolores nisi ea officiis nihil
-        consequuntur. Necessitatibus. Lorem ipsum dolor sit amet consectetur
-        adipisicing elit. Placeat architecto omnis animi id ut sit earum soluta
-        cupiditate, ex quidem repellat, itaque, voluptas dolores nisi ea
-        officiis nihil consequuntur. Necessitatibus. Lorem ipsum dolor sit amet
-        consectetur adipisicing elit. Placeat architecto omnis animi id ut sit
-        earum soluta cupiditate, ex quidem repellat, itaque, voluptas dolores
-        nisi ea officiis nihil consequuntur. Necessitatibus.
-      </p>
+      <p className="post-description">{post.description}</p>
     </div>
   );
 }
