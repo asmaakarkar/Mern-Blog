@@ -1,8 +1,14 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { Context } from "../../context/Context";
 import "./topbar.css";
 
 export default function TopBar() {
-  const user = true;
+  const { user, dispatch } = useContext(Context);
+
+  const handelLogout = () => {
+    dispatch({ type: "LOGOUT" });
+  };
   return (
     <div className="top">
       <div className="top-left">
@@ -36,17 +42,27 @@ export default function TopBar() {
               WRITE
             </Link>
           </li>
-          <li className="top-list-item">{user && "LOGOUT"}</li>
+          <li className="top-list-item" onClick={handelLogout}>
+            {user && "LOGOUT"}
+          </li>
         </ul>
       </div>
       <div className="top-right">
         {user ? (
           <Link to="/settings">
-            <img
-              className="top-image"
-              src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHw%3D&w=1000&q=80"
-              alt="profile photo"
-            />
+            {user.profilePic ? (
+              <img
+                className="top-image"
+                src={user.profilePic}
+                alt="profile photo"
+              />
+            ) : (
+              <img
+                className="top-image"
+                src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/271deea8-e28c-41a3-aaf5-2913f5f48be6/de7834s-6515bd40-8b2c-4dc6-a843-5ac1a95a8b55.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzI3MWRlZWE4LWUyOGMtNDFhMy1hYWY1LTI5MTNmNWY0OGJlNlwvZGU3ODM0cy02NTE1YmQ0MC04YjJjLTRkYzYtYTg0My01YWMxYTk1YThiNTUuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.BopkDn1ptIwbmcKHdAOlYHyAOOACXW0Zfgbs0-6BY-E"
+                alt="profile photo"
+              />
+            )}
           </Link>
         ) : (
           <ul className="top-list">

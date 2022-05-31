@@ -6,9 +6,11 @@ import Setting from "./pages/setting/Setting";
 import SinglePost from "./pages/single-post/SinglePost";
 import WritePost from "./pages/write-post/WritePost";
 import { Route, Routes } from "react-router-dom";
+import { useContext } from "react";
+import { Context } from "./context/Context";
 
 function App() {
-  const user = true;
+  const { user } = useContext(Context);
   return (
     <>
       <TopBar />
