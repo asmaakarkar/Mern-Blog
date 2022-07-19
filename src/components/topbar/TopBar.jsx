@@ -5,6 +5,7 @@ import "./topbar.css";
 
 export default function TopBar() {
   const { user, dispatch } = useContext(Context);
+  const publicFolder = "http://localhost:5001/images/";
 
   const handelLogout = () => {
     dispatch({ type: "LOGOUT" });
@@ -53,7 +54,7 @@ export default function TopBar() {
             {user.profilePic ? (
               <img
                 className="top-image"
-                src={user.profilePic}
+                src={publicFolder + user.profilePic}
                 alt="profile photo"
               />
             ) : (

@@ -73,3 +73,9 @@
   padding: 10px;
   cursor: pointer;
 }
+
+.setting-success {
+  color: green;
+  text-align: center;
+  margin-top: 20px;
+}
